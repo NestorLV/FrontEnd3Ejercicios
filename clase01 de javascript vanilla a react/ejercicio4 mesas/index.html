@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creando Elementos con React</title>
+</head>
+<body>
+
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    
+
+    <div id="root"></div>
+
+    <script type="text/javascript">
+        const h1 = React.createElement(
+            "h1",
+            {key:1},
+            "Con lo visto hasta ahora"
+        );
+        const h2= React.createElement(
+            "h2",
+            {key:2},
+            "Replica este HTML"
+        );
+        const h3 = React.createElement(
+            "h3",
+            {key:3},
+            "Usando"
+        );
+        const h4 = React.createElement(
+            "h4",
+            {key:4},
+            "React.js"
+        );
+        const footer = React.createElement(
+            "footer",
+            {key:5},
+            "Suerte¡"
+        );
+
+
+        ReactDOM.render([h1,h2,h3,h4,footer], document.querySelector("body"));
+    </script>
+    
+    
+</body>
+</html>

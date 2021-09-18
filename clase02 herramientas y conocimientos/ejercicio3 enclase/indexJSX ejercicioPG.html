@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Creando Elementos con JSX</title>
+  </head>
+
+  <body>
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <div id="root"></div>
+
+    <div id="root2"></div>
+
+    <script type="text/javascript">
+      
+      console.log("load");
+      // Es la creacion de <div>Prueba <span>Soy span</span></div>
+      const StaticElement1 = React.createElement(
+        "div",
+        {key:1},
+        ["Prueba ",React.createElement("span",{style:{color: "red"}, key:2},"Soy span")]
+      );      
+      
+      const StaticElement2 = React.createElement("div",
+        {style:{backgroundColor:"lightblue"}, key:3},
+        React.createElement(
+          "div",
+          {style:{border:"1px solid black"}, key:4},
+          React.createElement(
+            "ul",
+            null,
+            React.createElement("li", {key:5}, "1"),
+            React.createElement("li", {key:6}, "2"),
+            React.createElement("li", {key:7}, "3")
+          )
+        )
+      );
+
+      const container = document.querySelector("#root");
+     
+      function DinamycElementByPropsText(props) {
+        return React.createElement("div",{key:8},props.text)
+      }
+
+      function DinamycElementByPropsChildren(props) {
+        return React.createElement("div",null,props.children)
+      }
+
+      
+      function MyDiv() {
+        return React.createElement(
+          "div",
+          {style:{border:"2px solid red", padding:"1rem"}, key:9},
+          [
+            StaticElement1,
+            StaticElement2,
+            React.createElement(DinamycElementByPropsText, {text:"Hola Mundo, llege como parametro por props",key:10} ,null),
+            React.createElement(DinamycElementByPropsText, {text:"Soy Nestor",key:11} ,null),
+            React.createElement(DinamycElementByPropsChildren, {text:"creando etiquetas al interior de tipo span: ", key:12},React.createElement("span",{style:{color:"red"}},"span"))  
+            
+          ]
+        );
+      }
+
+      
+
+      function GlobalElement() { return React.createElement(MyDiv,{key:13},null)}  //Esta funcion renderiza el GlobalElement (Este elemento se inicializa con parentesis) e invoca la funcion MyDiv por createElement la cual no requiere los parentesis para invocar la funcion    
+    
+      ReactDOM.render(GlobalElement(), container );
+
+    </script>
+
+    <script type="text/babel">
+      const divContenedor1 = (
+        <div>
+          <p key={1}>Soy un parrafo</p>
+          <p key={2}>Soy otro parrafo</p>
+        </div>
+      );
+      
+      const p1 = <p key={4}>Soy un parrafo con variables</p>;
+      const p2 = <p key={5}>Soy otro parrafo con variables</p>;
+      
+      const divContenedor2 = (
+        <div>
+          {p1}
+          {p2}
+        </div>
+      );
+      
+      function MyDiv(props){
+          console.log(props);
+        return <div className={props.miestilo}> Creado con funcion y JSX - Babel</div>
+      }
+
+      function MyLi(props){
+        return <li style={{color: props.color}}>{props.children}</li>
+      }
+
+      function MyUl(){
+        return <ul><MyLi color="red">Prueba y una imagen <img src="https://i.pravatar.cc/150" alt="imagen pravatar"/></MyLi><MyLi color="blue">Prueba con otro color<img src="https://i.pravatar.cc/150" alt="imagen pravatar"/></MyLi></ul>;
+      }
+
+      const colors=["red","blue", "green"];
+      const pelis= ["naruto","bleach", "boruto"];
+
+      function Prueba1(props){
+        return <ul>{pelis.map((peli,index)=><MyLi color={colors[index]}>{peli}</MyLi>)} </ul>;
+      }
+  
+      const divContenedor3 = (
+        <div>
+          {divContenedor1}
+          {divContenedor2}
+          {<MyDiv miestilo="item"/>}
+          {<MyUl/>}
+          {<Prueba1/>}
+        </div>
+      );
+
+      ReactDOM.render(divContenedor3, document.getElementById("root2"));
+    </script>
+  </body>
+</html>

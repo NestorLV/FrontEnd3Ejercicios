@@ -1,0 +1,5 @@
+https://javascript.info/task/shuffle
+
+https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
+
+https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Math/random

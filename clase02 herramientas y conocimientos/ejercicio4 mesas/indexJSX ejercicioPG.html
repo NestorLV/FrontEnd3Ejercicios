@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Creando Elementos con JSX</title>
+  </head>
+
+  <body>
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <div id="root"></div>
+
+    <script type="text/babel">
+    
+      const titulo1= <h1>Con lo visto hasta ahora</h1>;
+
+      function TituloconH2(){return <h2>Replica este HTML</h2>;};
+
+      function TituloConH3(props){return <h3>{props.children}</h3>}
+      
+      // 1 las variables siempre deben llevar las laves
+      // 2 los componentes o funciones siempre llevan la primera letra en mayuscula
+      // 3 el props children es el contenido al interior de las llaves
+      // 4 se puede llamar con el dot notation en jsx
+
+      const tituloConH4= {type:"h4", text:"React.js"}
+
+        const contenedor=
+          <div>
+            {titulo1}
+            {<TituloconH2/>}
+            {<TituloConH3>Usando</TituloConH3>}
+            {<tituloConH4.type>{tituloConH4.text}</tituloConH4.type>}
+            <h5>!!Buena Suerte¡¡</h5>
+          </div>
+      
+      
+      ReactDOM.render(contenedor,document.querySelector("#root"))
+    
+    
+    </script>
+
+
+
+    
+  </body>
+</html>

@@ -1,0 +1,14 @@
+.encabezado1 {
+    background-color: rgb(247, 208, 150);
+    border: 1px solid black;
+    padding: 1rem;
+    margin: 1rem;
+}
+
+.encabezado2 {
+    background-color: rgb(143, 170, 247);
+    border: 1px solid black;
+    padding: 1rem;
+    margin: 1rem;
+}
+

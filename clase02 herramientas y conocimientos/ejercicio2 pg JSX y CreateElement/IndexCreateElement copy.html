@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creando Elementos con React</title>
+    
+</head>
+<body>
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+   
+
+    <div id="root"></div>
+
+    <script type="text/javascript">
+    
+        const p1=React.createElement(
+            "p",
+            {key:1, id:"prueba1"},
+            "soy un parafo"
+        );
+        const p2=React.createElement(
+            "p",
+            {key:2, id:"prueba2"},
+            "soy otro parafo"
+        );
+
+        const divContenedor= React.createElement(
+            "div",
+            {key:3, id:"prueba3"},
+            [p1,p2]
+
+        );
+        ReactDOM.render(divContenedor,document.getElementById("root"));
+    </script>
+    
+</body>
+</html>

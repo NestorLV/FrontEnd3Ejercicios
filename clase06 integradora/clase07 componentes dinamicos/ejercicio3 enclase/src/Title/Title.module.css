@@ -1,0 +1,26 @@
+@media (prefers-reduced-motion: no-preference) {
+    .App-logo {
+      animation: App-logo-spin infinite 50s cubic-bezier(0.215, 0.610, 0.355, 1);
+    }
+  }
+
+
+  p {
+    color: blueviolet;
+  }
+  
+  .gato {
+    color:brown;
+  }
+
+
+
+  @keyframes App-logo-spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
